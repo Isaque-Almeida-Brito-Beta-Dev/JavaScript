@@ -7,9 +7,12 @@ input:invalid {
     75% { transform: translateX(4px);}
 
 }
+
 body{
-    
+    color: rgb(255, 255, 255);
     text-align: center;
-    background-color: gray;
-    
+        background-color: rgb(97, 74, 202);
+        background-image: linear-gradient( to right, red, transparent, blue );
+        padding: 100px; 
 }
+
