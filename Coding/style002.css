@@ -1,0 +1,14 @@
+input:invalid {
+    animation: shake .3s;
+}
+@keyframes shake {
+    25% { transform: translateX(4px);}
+    50% { transform: translateX(-4px);}
+    75% { transform: translateX(4px);}
+
+}
+body{
+    
+    text-align: center;
+    background-color: gray;
+}
