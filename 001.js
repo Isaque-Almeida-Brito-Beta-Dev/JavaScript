@@ -214,3 +214,172 @@ class No {
   arvoreBinaria.PreOrdem(raiz);
   
   console.log(arvoreBinaria);
+  // classe para criar os nós da lista
+class Node {
+    constructor(value) {
+      this.value = value;
+      this.next = null;
+    }
+  }
+  
+  class LinkedList {
+    constructor() {
+      this.head = null;
+      this.tail = this.head;
+      this.length = 0;
+    }
+  
+    // inserir elementos na lista
+    append(value) {
+      const newNode = new Node(value);
+      if (!this.head) {
+        this.head = newNode;
+        this.tail = newNode;
+      } else {
+        this.tail.next = newNode;
+        this.tail = newNode;
+      }
+      this.length++;
+    }
+  
+    // inserir valores no começo da lista
+    prepend(value) {
+      const node = new Node(value);
+  
+      node.next = this.head;
+      this.head = node;
+      this.length++;
+    }
+  
+    insert(value, index) {
+      if (index >= this.length) {
+        this.append(value);
+      }
+  
+      const node = new Node(value);
+  
+      const {
+        prevNode,
+        nextNode
+      } = this.getPrevNextNodes(index);
+      prevNode.next = node;
+      node.next = nextNode;
+  
+      this.length++;
+    }
+  
+    // obter os nós da lista
+    getPrevNextNodes(index) {
+      let count = 0;
+      let prevNode = this.head;
+      let nextNode = prevNode.next;
+  
+      while (count < index - 1) {
+        prevNode = prevNode.next;
+        nextNode = prevNode.next;
+        count++;
+      }
+  
+      return {
+        prevNode,
+        nextNode
+      }
+    }
+  
+    // remover os nós da lista
+    remove(index) {
+      let {
+        previousNode,
+        currentNode
+      } = this.getNodes(index);
+      previousNode.next = currentNode.next;
+      this.length--;
+    }
+  
+    // inverter a lista
+    remove(index) {
+      let {
+        previousNode,
+        currentNode
+      } = this.getNodes(index);
+      previousNode.next = currentNode.next;
+      this.length--;
+    }
+  }
+  
+  const linkedList1 = new LinkedList();
+  linkedList1.append(2);
+  linkedList1.append(3);
+  linkedList1.append(4);
+  console.log(linkedList1);
+  
+  let linkedList2 = new LinkedList();
+  linkedList2.append(23);
+  linkedList2.append(89);
+  linkedList2.append(12);
+  linkedList2.append(3);
+  console.log(linkedList2);
+  class Stack {
+    constructor(maxSize) {
+      // definir o número máximo de elementos da pilha caso não seja fornecido
+      if (isNaN(maxSize)) return maxSize = 10;
+      this.maxSize = maxSize; // iniciar um array que conterá os valores da pilha
+      this.container = []; // vetor que terá os elementos da pilha
+    }
+  
+    // método para ver os itens
+    display() {
+      console.log(this.container);
+    }
+  
+    // verifica se a pilha está vazia
+    isEmpty() {
+      return this.container.length === 0;
+    }
+  
+    // verifica se a pilha está cheia
+    isFull() {
+      return this.container.length >= this.maxSize;
+    }
+  
+    push(element) {
+      // Verifica se a pilha está cheia
+      if (this.isFull()) {
+        console.log("Stack Overflow!");
+        return;
+      }
+      this.container.push(element);
+    }
+  
+    pop() {
+      // Verifica se a pilha está vazia
+      if (this.isEmpty()) {
+        console.log("Stack Underflow!");
+        return;
+      }
+      this.container.pop();
+    }
+  
+    peek() {
+      if (this.isEmpty()) {
+        console.log("Stack Underflow!");
+        return;
+      }
+      return this.container[this.container.length - 1];
+    }
+  
+    // método para limpar o array
+    clear() {
+      this.container = [];
+    }
+  }
+  
+   "pilha" = new Stack(3);
+  pilha.push(1);
+  pilha.push(2);
+  pilha.push(3);
+  pilha.display();
+  pilha.pop();
+  pilha.clear();
+  pilha.display();
+  console.log(pilha);
